@@ -132,16 +132,25 @@ function Level:init()
     -- simple edge shape to represent collision for ground
     self.edgeShape = love.physics.newEdgeShape(0, 0, VIRTUAL_WIDTH * 3, 0)
 
-    -- spawn an alien to try and destroy
-    table.insert(self.aliens, Alien(self.world, 'square', VIRTUAL_WIDTH - 80, VIRTUAL_HEIGHT - TILE_SIZE - ALIEN_SIZE / 2, 'Alien'))
-
     -- spawn a few obstacles
+    table.insert(self.obstacles, Obstacle(self.world, 'vertical',
+        VIRTUAL_WIDTH - 40, VIRTUAL_HEIGHT - 35 - 110 / 2))
     table.insert(self.obstacles, Obstacle(self.world, 'vertical',
         VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 35 - 110 / 2))
     table.insert(self.obstacles, Obstacle(self.world, 'vertical',
-        VIRTUAL_WIDTH - 35, VIRTUAL_HEIGHT - 35 - 110 / 2))
+        VIRTUAL_WIDTH - 205, VIRTUAL_HEIGHT - 35 - 110 / 2))
+    table.insert(self.obstacles, Obstacle(self.world, 'vertical',
+        VIRTUAL_WIDTH - 290, VIRTUAL_HEIGHT - 35 - 110 / 2))
+
     table.insert(self.obstacles, Obstacle(self.world, 'horizontal',
         VIRTUAL_WIDTH - 80, VIRTUAL_HEIGHT - 35 - 110 - 35 / 2))
+    table.insert(self.obstacles, Obstacle(self.world, 'horizontal',
+        VIRTUAL_WIDTH - 250, VIRTUAL_HEIGHT - 35 - 110 - 35 / 2))
+
+    -- spawn the aliens to try and destroy
+    table.insert(self.aliens, Alien(self.world, 'square', VIRTUAL_WIDTH - 80, VIRTUAL_HEIGHT - TILE_SIZE - ALIEN_SIZE / 2, 'Alien'))
+    table.insert(self.aliens, Alien(self.world, 'square', VIRTUAL_WIDTH - 160, VIRTUAL_HEIGHT - TILE_SIZE - ALIEN_SIZE / 2, 'Alien'))
+    table.insert(self.aliens, Alien(self.world, 'square', VIRTUAL_WIDTH - 250, VIRTUAL_HEIGHT - TILE_SIZE - ALIEN_SIZE / 2, 'Alien'))
 
     -- ground data
     self.groundBody = love.physics.newBody(self.world, -VIRTUAL_WIDTH, VIRTUAL_HEIGHT - 35, 'static')
