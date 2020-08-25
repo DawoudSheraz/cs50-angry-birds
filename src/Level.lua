@@ -240,26 +240,25 @@ function Level:update(dt)
             mainAlien = self.launchMarker.alien
             mainVX, mainVY = mainAlien.body:getLinearVelocity()
             
-            newVx, newVy = mainVX * 0.7, mainVY * 0.7
 
             bird1 = self:createNewPlayer(
-                mainAlien.body:getX() + 5,
-                mainAlien.body:getY() - 50,
-                newVx,
-                newVy,
+                mainAlien.body:getX() + 15,
+                mainAlien.body:getY() - 35,
+                mainVX * 1.1,
+                mainVY,
                 {}
             )
             bird2 = self:createNewPlayer(
-                mainAlien.body:getX() + 5,
-                mainAlien.body:getY() + 50,
-                newVx,
-                newVy,
+                mainAlien.body:getX() + 15,
+                mainAlien.body:getY() + 35,
+                mainVX * 1.1,
+                mainVY,
                 {}
             )
             table.insert(self.additionalBirds, bird1)
             table.insert(self.additionalBirds, bird2)
-
-            self.launchMarker.alien.body:setLinearVelocity(newVx, newVy)
+            
+            self.launchMarker.alien.body:setLinearVelocity(mainVX * 0.9, mainVY)
             self.canBirdsSpawn = false
             
         end
